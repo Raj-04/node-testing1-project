@@ -171,6 +171,13 @@ class Car {
    */
   refuel(gallons) {
     // ✨ implement
+    if (this.tank + gallons > this.tankSize) {
+      this.tank = this.tankSize
+    } else {
+      this.tank += gallons
+    }
+    const miles = this.tank * this.mpg
+    return miles
   }
 }
 
