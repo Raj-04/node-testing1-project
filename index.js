@@ -124,9 +124,12 @@ class Car {
    * @param {number} mpg - miles the car can drive per gallon of gas
    */
   constructor(name, tankSize, mpg) {
+    this.model = name
     this.odometer = 0 // car initilizes with zero miles
     this.tank = tankSize // car initiazes full of gas
     // ✨ initialize whatever other properties are needed
+    this.mpg = mpg
+    this.tankSize = tankSize
   }
 
   /**
@@ -144,6 +147,15 @@ class Car {
    */
   drive(distance) {
     // ✨ implement
+    const fuelNeeded = distance / this.mpg
+    if (fuelNeeded > this.tank) {
+      this.odometer += (this.tank * this.mpg)
+      this.tank = 0
+    } else {
+      this.odometer += distance
+      this.tank -= fuelNeeded
+    }
+    return this.odometer
   }
 
   /**
